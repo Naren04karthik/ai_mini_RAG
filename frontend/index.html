@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Recipe Chatbot</title>
+    <title>AI Recipe Assistant</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app">
+<div class="container">
+
     <div class="header">AI Recipe Assistant</div>
 
     <div id="chat-box"></div>
 
     <div class="input-area">
-        <input type="text" id="user-input" placeholder="Enter ingredients...">
-        <button onclick="sendMessage()">➤</button>
+        <div class="input-wrapper">
+            <input id="input" placeholder="Ask recipe or enter ingredients..." />
+            <button onclick="sendMessage()">➤</button>
+        </div>
     </div>
+
 </div>
 
 <script src="script.js"></script>
