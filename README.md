@@ -1,39 +1,66 @@
-# AI Recipe Generator (RAG-Based Chatbot)
+# AI Recipe Assistant (RAG-Based)
 
-An intelligent recipe recommendation chatbot built using Retrieval-Augmented Generation (RAG).  
-The system suggests recipes based on available ingredients and generates step-by-step cooking instructions using large language models.
+## Overview
+
+The AI Recipe Assistant is an intelligent application that helps users discover recipes using either available ingredients or dish-based queries. The system uses Retrieval-Augmented Generation (RAG) to combine semantic search with a Large Language Model (LLM) to provide accurate and structured cooking instructions.
 
 ---
 
 ## Features
 
-- Ingredient-based recipe search  
-- Retrieval-Augmented Generation (RAG) pipeline using FAISS  
-- LLM-powered response generation using Groq (LLaMA 3.1)  
-- Interactive user interface using Streamlit  
-- Chat history tracking  
-- Fast semantic search using embeddings  
+* Ingredient-based recipe recommendation
+* Dish-based query handling (e.g., "how to make pasta")
+* Missing ingredient detection
+* Step-by-step cooking instructions
+* Out-of-domain query detection
+* Chat-based user interface
+* Semantic search using FAISS
+* Hybrid RAG architecture (logic + LLM)
 
 ---
 
 ## Tech Stack
 
-- Frontend: Streamlit  
-- Backend: Python  
-- LLM: Groq (LLaMA 3.1)  
-- Vector Database: FAISS  
-- Embeddings: Sentence Transformers (MiniLM)  
-- Framework: LangChain  
+* Frontend: HTML, CSS, JavaScript
+* Backend: FastAPI (Python)
+* Vector Database: FAISS
+* Embeddings: Sentence Transformers (all-MiniLM-L6-v2)
+* LLM: Groq (LLaMA 3.1)
+* Environment: Python Virtual Environment, VS Code
 
 ---
 
-## Architecture
+## Project Structure
 
-User Input (Ingredients)  
-→ FAISS Vector Search (Top-K Recipes)  
-→ Context Retrieval  
-→ LLM (Groq - LLaMA 3.1)  
-→ Generated Recipe and Instructions  
+```
+ai_mini_RAG/
+│
+├── frontend/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+│
+├── main.py
+├── app.py
+├── clean.py
+├── remove_columns.py
+├── RAG.ipynb
+├── README.md
+├── .gitignore
+└── .env
+```
+
+---
+
+## How It Works
+
+1. User enters a query (ingredients or dish name)
+2. Query is converted into embeddings
+3. FAISS retrieves the most relevant recipes
+4. Backend selects the best match
+5. Missing ingredients are computed (if applicable)
+6. LLM generates structured response
+7. Output is displayed in the frontend
 
 ---
 
@@ -41,78 +68,71 @@ User Input (Ingredients)
 
 ### 1. Clone the Repository
 
-git clone https://github.com/your-username/ai_mini_RAG.git  
-cd ai_mini_RAG  
+```
+git clone https://github.com/Naren04karthik/ai_mini_RAG.git
+cd ai_mini_RAG
+```
 
 ---
 
 ### 2. Create Virtual Environment
 
-python -m venv venv  
-venv\Scripts\activate  
+```
+python -m venv .venv
+```
+
+Activate:
+
+**Windows:**
+
+```
+.venv\Scripts\activate
+```
 
 ---
 
 ### 3. Install Dependencies
 
-pip install streamlit langchain langchain-community langchain-huggingface langchain-groq faiss-cpu sentence-transformers python-dotenv  
+```
+pip install fastapi uvicorn langchain langchain-community langchain-huggingface langchain-groq sentence-transformers faiss-cpu python-dotenv
+```
 
 ---
 
-### 4. Add API Key
+### 4. Setup Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in root:
 
-GROQ_API_KEY=your_api_key_here  
-
----
-
-### 5. Run the Application
-
-python -m streamlit run app.py  
+```
+GROQ_API_KEY=your_groq_api_key_here
+```
 
 ---
 
-## Example Usage
+### 5. Run Backend (FastAPI)
 
-Input:  
-tomato, onion, garlic  
+```
+uvicorn main:app --reload
+```
 
-Output:  
-- Suggested recipe  
-- Step-by-step instructions  
-- Missing ingredients  
+Server will run at:
 
----
-
-## Dataset
-
-Source: Kaggle (3A2M Recipe Dataset)  
-
-Features:
-- Title  
-- Directions  
-- Ingredients (NER)  
-- Genre  
-
-The dataset was cleaned, balanced across categories, and converted into structured documents for efficient retrieval.
+```
+http://127.0.0.1:8000
+```
 
 ---
 
-## Key Highlights
+### 6. Run Frontend
 
-- Efficient handling of large-scale dataset through sampling  
-- Semantic retrieval using FAISS vector database  
-- Modular pipeline: Data Processing → Embedding → Retrieval → Generation  
-- Integration of LLM with retrieval for context-aware responses  
+* Open `frontend/index.html` in browser
+  OR
+* Use Live Server in VS Code
 
 ---
 
-## Future Improvements
+## Conclusion
 
-- Ingredient matching optimization  
-- Nutritional filtering (calories, diet type)  
-- Image-based ingredient detection  
-- Cloud deployment  
+This project demonstrates the effective use of Retrieval-Augmented Generation (RAG) by combining FAISS-based semantic retrieval with LLM-based response generation. It provides a practical and user-friendly solution for recipe discovery and cooking assistance.
 
 ---
