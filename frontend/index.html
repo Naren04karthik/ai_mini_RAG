@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recipe Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="brand">
+                    <span class="brand-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                    <div>
+                        <h1>AI Recipe Assistant</h1>
+                        <p>Cook smarter with AI</p>
+                    </div>
+                </div>
+                <button id="new-chat-btn" class="new-chat-btn" type="button">
+                    <i class="fa-solid fa-plus"></i>
+                    New Chat
+                </button>
+            </div>
+
+            <div class="history-wrap">
+                <h2>Previous Chats</h2>
+                <ul id="chat-history" class="chat-history"></ul>
+            </div>
+        </aside>
+
+        <main class="chat-panel">
+            <header class="topbar">
+                <button id="toggle-sidebar" class="icon-btn" type="button" aria-label="Toggle sidebar">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="topbar-title">Recipe Assistant</div>
+            </header>
+
+            <section id="chat-box" class="chat-box"></section>
+
+            <footer class="composer-area">
+                <div class="composer">
+                    <input id="input" type="text" placeholder="Ask for a recipe or type ingredients..." autocomplete="off">
+                    <button id="send-btn" type="button" aria-label="Send message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
