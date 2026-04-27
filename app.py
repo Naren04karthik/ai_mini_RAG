@@ -64,10 +64,17 @@ def get_missing(user_ing, recipe_ing):
 # -----------------------------
 st.set_page_config(page_title="Recipe Generator", page_icon="🍳")
 
+<<<<<<< HEAD
 st.title("AI Recipe Generator ")
 st.write("Enter ingredients and get a recipe suggestion!")
 
 query = st.text_input("Enter ingredients")
+=======
+st.title("AI Recipe Generator (Correct RAG)")
+st.write("Enter ingredients and get accurate recipe!")
+
+query = st.text_input("Enter ingredients (comma separated):")
+>>>>>>> 4127deab7e89e74a9fe9e26b36fdec031df309e9
 
 if st.button("Get Recipe"):
 
@@ -148,4 +155,8 @@ if st.button("Get Recipe"):
             st.write(missing_text)
 
     else:
+<<<<<<< HEAD
         st.warning("Please enter ingredients!")
+=======
+        st.warning("Please enter ingredients!")
+>>>>>>> 4127deab7e89e74a9fe9e26b36fdec031df309e9

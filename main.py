@@ -89,7 +89,11 @@ def chat(req: QueryRequest):
     query = req.query.strip().lower()
 
     # -----------------------------
+<<<<<<< HEAD
     #  OUT OF DOMAIN CHECK
+=======
+    #   OUT OF DOMAIN CHECK
+>>>>>>> 4127deab7e89e74a9fe9e26b36fdec031df309e9
     # -----------------------------
     docs_scores = vector_db.similarity_search_with_score(query, k=1)
 
@@ -282,4 +286,8 @@ def chat(req: QueryRequest):
 
     res = llm.invoke(prompt)
 
+<<<<<<< HEAD
     return {"answer": res.content}
+=======
+    return {"answer": res.content}
+>>>>>>> 4127deab7e89e74a9fe9e26b36fdec031df309e9
