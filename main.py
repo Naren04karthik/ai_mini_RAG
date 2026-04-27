@@ -83,67 +83,13 @@ def extract_dish(query):
             return q.replace(k, "").strip()
     return q
 
-
-# -----------------------------
-# MAIN API
-# -----------------------------
-# @app.post("/chat")
-# def chat(req: QueryRequest):
-
-#     query = req.query.strip()
-
-#     # ============================
-#     # 🔹 DISH QUERY
-#     # ============================
-#     if is_dish_query(query):
-
-#         dish = extract_dish(query)
-#         docs = vector_db.similarity_search(dish, k=1)
-
-#         if not docs:
-#             return {"answer": "Recipe not found"}
-
-#         recipe_text = docs[0].page_content
-
-#         prompt = f"""
-#             You are a professional chef.
-#             If the prompt query is out of domain say out of domain question.Dont do assumption for it by giving the wrong information.
-
-
-#             Use ONLY the recipe below.
-
-#             Recipe:
-#             {recipe_text}
-
-#             Give:
-#             - Recipe Name
-#             - Ingredients (bullet points)
-#             - Steps (numbered clearly)
-#             - DO NOT include any "Missing Ingredients" section
-
-#             FORMAT:
-
-#             Recipe Name:
-#             ...
-
-#             Ingredients:
-#             - item1
-#             - item2
-
-#             Steps:(Each step should be explained clearly in detail)
-#             1. ...
-#             2. ...
-#             """
-
-#         res = llm.invoke(prompt)
-#         return {"answer": res.content}
 @app.post("/chat")
 def chat(req: QueryRequest):
 
     query = req.query.strip().lower()
 
     # -----------------------------
-    # 🔹 OUT OF DOMAIN CHECK
+    #   OUT OF DOMAIN CHECK
     # -----------------------------
     docs_scores = vector_db.similarity_search_with_score(query, k=1)
 
@@ -155,7 +101,7 @@ def chat(req: QueryRequest):
         }
 
     # ============================
-    # 🔹 DISH QUERY
+    #  DISH QUERY
     # ============================
     if is_dish_query(query):
 
@@ -200,7 +146,7 @@ def chat(req: QueryRequest):
         return {"answer": res.content}
 
     # ============================
-    # 🔹 INGREDIENT QUERY
+    #  INGREDIENT QUERY
     # ============================
     user = clean_input(query)
 
@@ -271,7 +217,7 @@ def chat(req: QueryRequest):
     return {"answer": res.content}
 
     # ============================
-    # 🔹 INGREDIENT QUERY
+    #  INGREDIENT QUERY
     # ============================
     user = clean_input(query)
     docs = vector_db.similarity_search(query, k=3)
